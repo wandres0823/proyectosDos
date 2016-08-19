@@ -55,7 +55,19 @@ public class principal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("Numero 1:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        txtNumeroUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroUnoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 60, -1));
+
+        txtNumeroDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 60, -1));
 
         txtResultado.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -88,7 +100,7 @@ public class principal extends javax.swing.JFrame {
         txtResultados.setEditable(false);
         jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 60, -1));
 
-        jLabel3.setForeground(new java.awt.Color(51, 255, 204));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("Operaciones:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, 20));
 
@@ -123,13 +135,18 @@ public class principal extends javax.swing.JFrame {
            txtNumeroDos.requestFocusInWindow();
        }
        else{
-        
+       
         
 
        n1 =Double.parseDouble(txtNumeroUno.getText());
        n2 =Double.parseDouble(txtNumeroDos.getText());
        op= cmbOperaciones.getSelectedIndex();
        
+         if( op == 3 && n2==0){
+             JOptionPane.showMessageDialog (this, "digite el numero dos","error",JOptionPane.ERROR_MESSAGE);
+           txtNumeroDos.requestFocusInWindow();
+           txtNumeroDos.selectAll();
+         }else{
        switch(op){
            case 0:
                    resultado=n1+n2;
@@ -147,10 +164,11 @@ public class principal extends javax.swing.JFrame {
        }
        
        
-       
+         }
         res =String.valueOf(resultado);
         txtResultados.setText(res);
        }
+    
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -162,6 +180,35 @@ public class principal extends javax.swing.JFrame {
         txtNumeroUno.requestFocusInWindow();
         cmbOperaciones.setSelectedIndex(0);
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtNumeroUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroUnoKeyTyped
+    
+        char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+              
+          }
+        
+        
+    }//GEN-LAST:event_txtNumeroUnoKeyTyped
+
+    private void txtNumeroDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDosKeyTyped
+        
+         char c=evt.getKeyChar(); 
+             
+         
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+               
+          }
+    }//GEN-LAST:event_txtNumeroDosKeyTyped
 
     /**
      * @param args the command line arguments
