@@ -29,10 +29,56 @@ public class principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumeroUno = new javax.swing.JTextField();
+        txtNumeroDos = new javax.swing.JTextField();
+        txtResultado = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cmdCalcular = new javax.swing.JButton();
+        cmdBorrar = new javax.swing.JButton();
+        txtResultados = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel1.setText("SUMA DE DOS NUMERO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+
+        jLabel2.setText("Numero 1:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        jPanel1.add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 60, -1));
+        jPanel1.add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 60, -1));
+
+        txtResultado.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtResultado.setForeground(new java.awt.Color(51, 51, 255));
+        txtResultado.setText("Resultado :");
+        jPanel1.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        jLabel4.setText("numero 2:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
+
+        cmdCalcular.setText("Calcular :");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+
+        cmdBorrar.setText("Borrar :");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+
+        txtResultados.setEditable(false);
+        jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,6 +93,29 @@ public class principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+        String num1, num2,res;
+        int n1,n2,suma;
+
+        
+        num1 = txtNumeroUno.getText();
+        num2 = txtNumeroDos.getText();
+        n1 = Integer.parseInt(num1);
+        n2 = Integer.parseInt(num2);
+        suma = n1+n2;
+        res =String.valueOf(suma);
+        txtResultados.setText(res);
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        
+        txtNumeroUno.setText("");
+        txtNumeroDos.setText("");
+        txtResultados.setText("");
+        
+        txtNumeroUno.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,6 +153,15 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNumeroDos;
+    private javax.swing.JTextField txtNumeroUno;
+    private javax.swing.JLabel txtResultado;
+    private javax.swing.JTextField txtResultados;
     // End of variables declaration//GEN-END:variables
 }
