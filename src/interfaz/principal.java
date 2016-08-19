@@ -88,7 +88,7 @@ public class principal extends javax.swing.JFrame {
         txtResultados.setEditable(false);
         jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 60, -1));
 
-        jLabel3.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 255, 204));
         jLabel3.setText("Operaciones:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, 20));
 
