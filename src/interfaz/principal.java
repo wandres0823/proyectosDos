@@ -42,6 +42,7 @@ public class principal extends javax.swing.JFrame {
         txtResultados = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cmbOperaciones = new javax.swing.JComboBox();
+        cmdSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,15 @@ public class principal extends javax.swing.JFrame {
 
         cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suma", "Resta", "Multiplicacion", "Division" }));
         jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
+
+        cmdSalir.setFont(new java.awt.Font("Script MT Bold", 2, 24)); // NOI18N
+        cmdSalir.setText("Salir");
+        cmdSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +203,10 @@ public class principal extends javax.swing.JFrame {
         cmbOperaciones.setSelectedIndex(0);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
+    private void cmdSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSalirActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_cmdSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,6 +246,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbOperaciones;
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCalcular;
+    private javax.swing.JButton cmdSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
