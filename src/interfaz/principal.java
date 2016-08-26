@@ -55,19 +55,7 @@ public class principal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("Numero 1:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-
-        txtNumeroUno.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumeroUnoKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 60, -1));
-
-        txtNumeroDos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumeroDosKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 60, -1));
 
         txtResultado.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -98,7 +86,7 @@ public class principal extends javax.swing.JFrame {
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         txtResultados.setEditable(false);
-        jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 60, -1));
+        jPanel1.add(txtResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 110, -1));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("Operaciones:");
@@ -111,36 +99,60 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(501, 352));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
         String res;
        double n1,n2,resultado=0;
-       int op;
+       int op,sw=1;
        
        if(txtNumeroUno.getText().isEmpty()){
            JOptionPane.showMessageDialog (this, "digite el numero uno","error",JOptionPane.ERROR_MESSAGE);
            txtNumeroUno.requestFocusInWindow();
+           sw=0;
        }
        else if (txtNumeroDos.getText().isEmpty()){
            JOptionPane.showMessageDialog (this, "digite el numero dos","error",JOptionPane.ERROR_MESSAGE);
            txtNumeroDos.requestFocusInWindow();
-       }
-       else{
-       
-        
+           sw=0;
+       }else{
+           try{
+                n1 =Double.parseDouble(txtNumeroUno.getText());
+           }catch(NumberFormatException e){
+               JOptionPane.showMessageDialog(this, "el´primer numero debe ser un numero valido","ERROR",JOptionPane.ERROR_MESSAGE);
+               txtNumeroUno.requestFocusInWindow();
+               txtNumeroUno.selectAll();
+               sw=0;
+              }
 
-       n1 =Double.parseDouble(txtNumeroUno.getText());
-       n2 =Double.parseDouble(txtNumeroDos.getText());
-       op= cmbOperaciones.getSelectedIndex();
+            try {
+                n2 = Double.parseDouble(txtNumeroDos.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El segundo número debe ser un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+                txtNumeroDos.requestFocusInWindow();
+                txtNumeroDos.selectAll();
+                sw = 0;
+            }
+
+        }
+
+        if (sw == 1) {
+
+            n1 = Double.parseDouble(txtNumeroUno.getText());
+            n2 = Double.parseDouble(txtNumeroDos.getText());
+            op = cmbOperaciones.getSelectedIndex();
+
        
          if( op == 3 && n2==0){
              JOptionPane.showMessageDialog (this, "digite el numero dos","error",JOptionPane.ERROR_MESSAGE);
@@ -180,35 +192,6 @@ public class principal extends javax.swing.JFrame {
         txtNumeroUno.requestFocusInWindow();
         cmbOperaciones.setSelectedIndex(0);
     }//GEN-LAST:event_cmdBorrarActionPerformed
-
-    private void txtNumeroUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroUnoKeyTyped
-    
-        char c=evt.getKeyChar(); 
-             
-         
-          if(!Character.isDigit(c)) { 
-              getToolkit().beep(); 
-               
-              evt.consume(); 
-               
-              
-          }
-        
-        
-    }//GEN-LAST:event_txtNumeroUnoKeyTyped
-
-    private void txtNumeroDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDosKeyTyped
-        
-         char c=evt.getKeyChar(); 
-             
-         
-          if(!Character.isDigit(c)) { 
-              getToolkit().beep(); 
-               
-              evt.consume(); 
-               
-          }
-    }//GEN-LAST:event_txtNumeroDosKeyTyped
 
     /**
      * @param args the command line arguments
